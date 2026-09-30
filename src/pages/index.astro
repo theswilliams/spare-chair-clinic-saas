@@ -1,0 +1,238 @@
+---
+import Base from '../layouts/Base.astro';
+import { PLANS } from '../data/plans';
+
+const seatGlyph = (kind: 'yes' | 'part' | 'no') =>
+  kind === 'yes'
+    ? '<svg class="g" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 18V9a7 7 0 0 1 14 0v9z" fill="currentColor"/></svg>'
+    : kind === 'part'
+      ? '<svg class="g" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 18V9a7 7 0 0 1 14 0v9z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 18v-6h14v6z" fill="currentColor"/></svg>'
+      : '<svg class="g" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 18V9a7 7 0 0 1 14 0v9z" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="3 2.5"/></svg>';
+
+const compare: [string, ['yes' | 'part' | 'no', string][]][] = [
+  ['Notices the gap straight away', [['part', 'When someone looks'], ['no', 'No'], ['yes', 'Yes']]],
+  ['Finds a patient the gap fits', [['part', 'From memory'], ['no', 'No'], ['yes', 'Yes, by the rules']]],
+  ['Offers in order, one at a time', [['part', 'If the list is to hand'], ['no', 'No'], ['yes', 'Yes']]],
+  ['Fills the gap after it opens', [['part', 'Sometimes'], ['no', 'No, it tries to prevent it'], ['yes', 'Yes']]],
+  ['Writes the booking to the diary', [['yes', 'By hand'], ['no', 'No'], ['yes', 'Yes']]],
+  ['Keeps a record of who was offered what', [['no', 'Rarely'], ['part', 'Reminders only'], ['yes', 'Yes']]],
+];
+
+const faqs: [string, string][] = [
+  ['Does it replace our diary?', 'No. Spare Chair reads your diary for cancellations and writes the new booking back. It does not hold clinical notes, run treatment plans or decide who gets seen.'],
+  ['What happens to a patient who is skipped?', 'Nothing. They keep their place. A seat that is too short or at the wrong time of day is passed over, and they are still in line for the next one.'],
+  ['Can two patients get the same seat?', 'No. Offers go out one at a time. The first yes takes the seat and the rest of the list is told nothing.'],
+  ['What if nobody on the list fits?', 'The seat stays open and your front desk is told. You are no worse off than today, and it is logged.'],
+  ['Does it message people who have not agreed to it?', 'No. Only patients who opted into waitlist messages are offered anything, and the log shows the consent used.'],
+  ['Is this a real product?', 'No. Spare Chair is a fictional product made for a web design portfolio. The clinics, people, prices and figures on this page are invented.'],
+];
+---
+
+<Base title="Spare Chair: cancelled slots, refilled" description="Concept site for Spare Chair, a fictional waitlist tool that refills cancelled appointments for small dental and physio clinics.">
+  <main>
+    <header class="t-field hero" id="top">
+      <p class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26V15a10 10 0 0 1 20 0v11z" fill="currentColor"/></svg>Spare Chair <span class="concept">Concept</span></p>
+      <div class="hero-row">
+        <h1>Cancellations go back on&nbsp;sale.</h1>
+        <div class="hero-side">
+          <p>Spare Chair offers a cancelled slot to the people on your waitlist who fit it, in order. The first yes takes the seat and your diary updates. It works beside the practice system you already use.</p>
+          <p class="hero-cta"><a class="stub" href="#start">Start free trial</a><a class="plain" href="#demo">Cancel a seat yourself</a></p>
+        </div>
+      </div>
+
+      <section id="demo" class="stage" data-stage aria-labelledby="stage-h">
+        <h2 id="stage-h" class="sr-only">Demo: cancel a seat and watch it refill</h2>
+        <div class="stage-bar">
+          <p class="status" data-status role="status" tabindex="-1">Loading the day.</p>
+          <ul class="legend" aria-label="Seat key">
+            <li><i class="k-free"></i>Free</li>
+            <li><i class="k-booked"></i>Booked</li>
+            <li><i class="k-open"></i>Open</li>
+            <li><i class="k-new"></i>Refilled</li>
+          </ul>
+          <button type="button" class="ghost" data-reset>Reset the day</button>
+        </div>
+        <div class="plan" data-plan role="group" aria-label="Today's diary: four rooms, half-hour seats from 9 am to 3 pm">
+          <noscript><p>The demo needs JavaScript. It shows a day plan in which a cancelled seat is offered to a waitlist.</p></noscript>
+        </div>
+        <div class="desk">
+          <div class="desk-q">
+            <h3>Waitlist</h3>
+            <ol class="queue" data-queue></ol>
+          </div>
+          <div class="desk-l">
+            <h3>Offer log <span>times illustrative</span></h3>
+            <ol class="log" data-log aria-live="polite" aria-label="Offer log"></ol>
+          </div>
+        </div>
+        <p class="fine">Try it: select any booked seat. Patients, rooms and replies are invented and scripted.</p>
+      </section>
+    </header>
+
+    <section id="rules" class="sheet t-cream" style="--prev:var(--field)" aria-labelledby="rules-h">
+      <div class="wrap split">
+        <div class="lead">
+          <h2 id="rules-h">It only offers a seat to people it fits.</h2>
+          <p>A phone round is slow because you have to remember who can do what. Spare Chair keeps those rules next to the waitlist, so the first person texted is one who can actually come.</p>
+        </div>
+        <dl class="rules">
+          <div><dt>Length</dt><dd>A patient who needs 90 minutes is not offered a 60-minute gap. They are skipped and keep their place.</dd></div>
+          <div><dt>Time of day</dt><dd>Mornings-only patients are never texted about a 2:30 pm gap.</dd></div>
+          <div><dt>Order</dt><dd>Offers go down the list one at a time. Nobody is offered two seats at once, so nobody is double-booked.</dd></div>
+          <div><dt>First yes</dt><dd>The first person to confirm takes the seat. The diary is updated and the rest of the list is left alone.</dd></div>
+          <div><dt>Leftovers</dt><dd>If a 30-minute patient takes a 60-minute gap, the other half hour goes back on sale.</dd></div>
+          <div><dt>Consent</dt><dd>Only patients who agreed to waitlist messages are contacted. Every offer is logged with the time and the consent used.</dd></div>
+        </dl>
+      </div>
+      <div class="wrap not">
+        <h3>What it does not do</h3>
+        <p>It is not a diary: it reads and writes the one you have. It stores no clinical notes, gives no health advice and makes no decision about who needs treatment most. It does not try to stop cancellations; it assumes some will happen.</p>
+      </div>
+    </section>
+
+    <section id="numbers" class="sheet t-ink" style="--prev:var(--cream)" aria-labelledby="num-h">
+      <div class="wrap calc" data-calc>
+        <div class="lead">
+          <h2 id="num-h">Work out what a gap costs you.</h2>
+          <p>These are your numbers to change, not ours to claim. The refill share in particular is an assumption: it is not measured from any real clinic, because this product does not exist.</p>
+        </div>
+        <form class="sliders" onsubmit="return false">
+          <label for="f-rooms">Treatment rooms <output for="f-rooms"></output></label>
+          <input id="f-rooms" type="range" name="rooms" min="1" max="6" step="1" value="3" />
+          <label for="f-appts">Appointments a week <output for="f-appts"></output></label>
+          <input id="f-appts" type="range" name="appts" min="40" max="400" step="10" value="160" />
+          <label for="f-miss">Late cancels and no-shows <output for="f-miss"></output></label>
+          <input id="f-miss" type="range" name="miss" min="2" max="20" step="1" value="8" />
+          <label for="f-refill">Share refilled from the waitlist <output for="f-refill"></output></label>
+          <input id="f-refill" type="range" name="refill" min="10" max="80" step="5" value="40" />
+          <label for="f-value">Average appointment value <output for="f-value"></output></label>
+          <input id="f-value" type="range" name="value" min="40" max="400" step="10" value="120" />
+        </form>
+        <p class="result" data-result role="status"></p>
+        <p class="fine">Illustrative arithmetic only. Weeks are counted as 4.33 a month, and the plan price is the fictional annual rate below.</p>
+      </div>
+    </section>
+
+    <section id="pricing" class="sheet t-cream" style="--prev:var(--ink)" aria-labelledby="price-h" data-pricing>
+      <div class="wrap">
+        <div class="price-head">
+          <h2 id="price-h">Priced by rooms, not by patients.</h2>
+          <div class="toggle">
+            <span id="bill-l">Pay monthly</span>
+            <button type="button" role="switch" aria-checked="false" aria-labelledby="bill-l bill-r" data-switch><span class="knob"></span></button>
+            <span id="bill-r">Pay yearly, two months free</span>
+          </div>
+        </div>
+        <div class="rate-ticket">
+          {
+            PLANS.map((p) => (
+              <article class="rate">
+                <h3>{p.name}</h3>
+                <p class="rooms">{p.rooms}</p>
+                {p.monthly ? (
+                  <p class="amount">
+                    <b data-monthly={p.monthly}>${p.monthly}</b> <span data-bill>a month</span>
+                  </p>
+                ) : (
+                  <p class="amount"><b>Ask</b> <span>after a short call</span></p>
+                )}
+                <ul>{p.lines.map((l) => <li>{l}</li>)}</ul>
+              </article>
+            ))
+          }
+        </div>
+        <p class="fine">Fictional prices in Canadian dollars. There is nothing to buy; the trial button below sends nothing.</p>
+      </div>
+    </section>
+
+    <section id="compare" class="sheet t-field" style="--prev:var(--cream)" aria-labelledby="cmp-h">
+      <div class="wrap">
+        <h2 id="cmp-h">Three ways to refill a gap.</h2>
+        <div class="table-wrap">
+          <table>
+            <caption class="sr-only">Phoning by hand, reminder-only tools and Spare Chair compared on six tasks</caption>
+            <thead>
+              <tr><th scope="col"><span class="sr-only">Task</span></th><th scope="col">Phoning by hand</th><th scope="col">Reminders only</th><th scope="col" class="us">Spare Chair</th></tr>
+            </thead>
+            <tbody>
+              {
+                compare.map(([row, cells]) => (
+                  <tr>
+                    <th scope="row">{row}</th>
+                    {cells.map(([k, t], i) => (
+                      <td class={i === 2 ? 'us' : ''}><span set:html={seatGlyph(k)} /><span class="t">{t}</span></td>
+                    ))}
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="fine">A filled seat means it does the task, half a seat means partly, a dashed seat means not at all. Reminder tools try to prevent a no-show, which is a different job.</p>
+      </div>
+    </section>
+
+    <section id="works" class="sheet t-ink" style="--prev:var(--field)" aria-labelledby="works-h">
+      <div class="wrap split">
+        <div class="lead">
+          <h2 id="works-h">It sits next to your diary, not on top of it.</h2>
+          <p>Connectors are listed by category. The names are invented, and no partnership with any real system is implied.</p>
+        </div>
+        <ul class="conn">
+          <li><span>Diary</span><span>Ledgerline <em>Live</em>, Chairside Pro <em>Live</em>, OpenBook <em>Beta</em></span></li>
+          <li><span>Messages</span><span>TextRail <em>Live</em>, Mailbench <em>Live</em></span></li>
+          <li><span>Waitlist in</span><span>Web form <em>Live</em>, Sheetline import <em>Beta</em>, Front-desk shortcut <em>Planned</em></span></li>
+        </ul>
+      </div>
+      <div class="wrap notes">
+        <h3>Notes from the front desk <span>fictional</span></h3>
+        <blockquote class="n1"><p>We used to lose a Thursday morning hour every week and find out at 8:55.</p><footer>Reception lead, Harbourview Physio, an invented clinic</footer></blockquote>
+        <blockquote class="n2"><p>I like that it skips people it should skip. It is not clever, it is careful.</p><footer>Practice manager, Elm Street Dental, an invented clinic</footer></blockquote>
+        <blockquote class="n3"><p>The log is what I show the owner.</p><footer>Front desk, Quill &amp; Marsh Dental, an invented clinic</footer></blockquote>
+      </div>
+    </section>
+
+    <section id="faq" class="sheet t-cream" style="--prev:var(--ink)" aria-labelledby="faq-h">
+      <div class="wrap split">
+        <h2 id="faq-h" class="lead">Questions the front desk asks first.</h2>
+        <div class="faq">
+          {faqs.map(([q, a]) => <details><summary>{q}</summary><p>{a}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="start" class="sheet t-field" style="--prev:var(--cream)" aria-labelledby="start-h">
+      <div class="wrap split">
+        <div class="lead">
+          <h2 id="start-h">Give the next cancellation somewhere to go.</h2>
+          <p>Fourteen days free in the concept, no card, nothing installed. Because this is a portfolio piece, the form below sends nothing and stores nothing.</p>
+        </div>
+        <form class="signup" data-signup>
+          <label for="s-email">Work email</label>
+          <input id="s-email" type="email" name="email" autocomplete="email" placeholder="name@clinic.example" aria-describedby="s-err" aria-invalid="false" />
+          <p id="s-err" class="err" data-err aria-live="polite"></p>
+          <label for="s-kind">Your clinic</label>
+          <select id="s-kind" name="kind"><option>Dental</option><option>Physiotherapy</option><option>Something else</option></select>
+          <button type="submit" class="stub">Start free trial</button>
+          <p class="done" data-done tabindex="-1" hidden>Demo only. Nothing was sent and nothing was stored.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="t-ink foot">
+    <div class="wrap">
+      <p><b>Spare Chair is a fictional product</b> made for a web design portfolio (project 04 of 5). The company, clinics, people, quotes, integrations, prices and figures are invented. There is no service behind this page.</p>
+    </div>
+  </footer>
+
+  <nav class="dock" aria-label="Sections">
+    <a href="#demo">Demo</a>
+    <a href="#rules" class="opt">Rules</a>
+    <a href="#numbers">Numbers</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#compare" class="opt">Compare</a>
+    <a href="#faq">FAQ</a>
+    <a href="#start" class="stub">Start free trial</a>
+  </nav>
+</Base>

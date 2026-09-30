@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T00:00:00Z",
+  "title": "Design System: Spare Chair",
+  "extensions": {
+    "colorMeta": {
+      "field-blue": { "role": "primary", "displayName": "Field Blue", "canonical": "#2236c4", "tonalRamp": ["#0b1150", "#111a7a", "#1a2aa3", "#2236c4", "#5362d6", "#818ce0", "#b0b7ec", "#dde0f8"] },
+      "seat-pink": { "role": "tertiary", "displayName": "Seat Pink", "canonical": "#ff6b9f", "tonalRamp": ["#5a0f2c", "#8f1b4a", "#c53a72", "#ff6b9f", "#ff8ab3", "#ffa6c6", "#ffc3d9", "#ffe0ec"] },
+      "cream": { "role": "neutral", "displayName": "Ticket Cream", "canonical": "#f0e4c3", "tonalRamp": ["#4d4630", "#7d7250", "#a89b72", "#c9bb92", "#e3d3a8", "#f0e4c3", "#f7efd9", "#fbf3dc"] },
+      "ink": { "role": "neutral", "displayName": "Night Ink", "canonical": "#0e1330", "tonalRamp": ["#0e1330", "#1b2148", "#2d3463", "#474c70", "#60658a", "#8a8eac", "#b9bdd8", "#e0e2ef"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Card titles, rule terms, buttons." },
+      "body": { "displayName": "Body", "purpose": "Serif prose and table cells." },
+      "label": { "displayName": "Label", "purpose": "Legend, tags, statuses, tick marks; tabular numerals." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All state transitions (0.2-0.3s)." },
+      { "name": "open-seat-ring", "value": "1.6s ease infinite, scale 1 to 1.06x1.22, opacity 0.9 to 0", "purpose": "Pulse ring on an open seat; disabled under reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "split-collapse", "value": "62rem" },
+      { "name": "plan-rotate", "value": "46rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ticket Stub Button",
+      "kind": "button",
+      "refersTo": "button-stub",
+      "description": "Primary action: cream stub with bitten sides.",
+      "html": "<button class=\"ds-stub\">Start free trial</button>",
+      "css": ".ds-stub{display:inline-block;border:0;cursor:pointer;background:#f0e4c3;color:#0e1330;font-family:'Bricolage Grotesque Variable','Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:1.0625rem;line-height:1;padding:1.05rem 1.9rem;border-radius:2px;-webkit-mask:radial-gradient(circle 7px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 7px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 7px at 0 50%,#0000 97%,#000) left/51% 100% no-repeat,radial-gradient(circle 7px at 100% 50%,#0000 97%,#000) right/51% 100% no-repeat;transition:background-color .2s cubic-bezier(.16,1,.3,1),transform .2s}.ds-stub:hover{background:#fff}.ds-stub:active{transform:translateY(1px)}.ds-stub:focus-visible{outline:3px solid #ff6b9f;outline-offset:4px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action with an arched top edge.",
+      "html": "<button class=\"ds-ghost\">Reset the day</button>",
+      "css": ".ds-ghost{background:transparent;color:#f0e4c3;border:1.5px solid rgba(240,228,195,.4);border-radius:6px 6px 2px 2px;font-family:'Bricolage Grotesque Variable','Helvetica Neue',Arial,sans-serif;font-weight:600;font-size:.9375rem;padding:.55rem 1rem;cursor:pointer;transition:border-color .2s,background-color .2s}.ds-ghost:hover{border-color:#f0e4c3;background:rgba(240,228,195,.1)}.ds-ghost:focus-visible{outline:3px solid #ff6b9f;outline-offset:3px}"
+    },
+    {
+      "name": "Booked Seat",
+      "kind": "custom",
+      "refersTo": "seat-booked",
+      "description": "A booked diary slot: cream arched tab with initials and length.",
+      "html": "<button class=\"ds-seat\"><span class=\"ds-ini\">MK</span><span class=\"ds-len\">60 min</span></button>",
+      "css": ".ds-seat{display:flex;flex-direction:column;align-items:center;justify-content:center;width:7rem;height:3.5rem;border:0;border-radius:10px 10px 3px 3px;background:#f0e4c3;color:#0e1330;font-family:'Bricolage Grotesque Variable','Helvetica Neue',Arial,sans-serif;line-height:1.1;cursor:pointer;transition:transform .2s cubic-bezier(.16,1,.3,1),background-color .25s}.ds-seat:hover{transform:translateY(-2px);background:#fbf3dc}.ds-seat:focus-visible{outline:3px solid #ff6b9f;outline-offset:3px}.ds-ini{font-weight:700;font-size:1rem}.ds-len{font-size:.75rem;font-weight:500;color:#3b4064}"
+    },
+    {
+      "name": "Open Seat",
+      "kind": "custom",
+      "refersTo": "seat-open",
+      "description": "A cancelled, available seat: the only place pink fills a surface.",
+      "html": "<div class=\"ds-open\"><span>Open</span><span class=\"ds-len\">60 min</span></div>",
+      "css": ".ds-open{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:7rem;height:3.5rem;border-radius:10px 10px 3px 3px;background:#ff6b9f;color:#0e1330;font-family:'Bricolage Grotesque Variable','Helvetica Neue',Arial,sans-serif;font-weight:700}.ds-open::after{content:'';position:absolute;inset:-3px;border:2px solid #ff6b9f;border-radius:13px 13px 5px 5px;opacity:0;animation:ds-ring 1.6s cubic-bezier(.16,1,.3,1) infinite}.ds-len{font-size:.75rem;font-weight:500}@keyframes ds-ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.06,1.22)}}@media(prefers-reduced-motion:reduce){.ds-open::after{animation:none}}"
+    },
+    {
+      "name": "Email Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Cream field with seat radii; invalid state adds a text prefix as well as colour.",
+      "html": "<input class=\"ds-input\" type=\"email\" placeholder=\"name@clinic.example\" />",
+      "css": ".ds-input{width:100%;font:1.0625rem 'Source Serif 4 Variable',Georgia,serif;color:#0e1330;background:#f0e4c3;border:2px solid transparent;border-radius:10px 10px 3px 3px;padding:.85rem 1rem}.ds-input::placeholder{color:#60658a}.ds-input:focus-visible{outline:3px solid #ff6b9f;outline-offset:3px}"
+    },
+    {
+      "name": "Dock Navigation",
+      "kind": "nav",
+      "refersTo": "dock",
+      "description": "Fixed ink bar with dotted top edge and a current-section bar.",
+      "html": "<nav class=\"ds-dock\"><a href=\"#demo\" aria-current=\"true\">Demo</a><a href=\"#pricing\">Pricing</a><a href=\"#faq\">FAQ</a></nav>",
+      "css": ".ds-dock{display:flex;align-items:stretch;gap:.25rem;height:4.25rem;background:#0e1330;color:#f0e4c3;padding:0 .75rem;border-top:2px dotted rgba(240,228,195,.45);font-family:'Bricolage Grotesque Variable','Helvetica Neue',Arial,sans-serif}.ds-dock a{position:relative;display:flex;align-items:center;padding:0 1.1rem;color:inherit;text-decoration:none;font-weight:600}.ds-dock a:hover{text-decoration:underline;text-underline-offset:.3em}.ds-dock a[aria-current]::after{content:'';position:absolute;left:1.1rem;right:1.1rem;top:0;height:4px;background:#f0e4c3;border-radius:0 0 4px 4px}.ds-dock a:focus-visible{outline:3px solid #ff6b9f;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Ticket Book",
+    "overview": "Every surface is a sheet of paper-like stock in one of three flat colours (blue field, cream, ink), torn from the previous sheet along a perforated edge. The one recurring object is the seat: an arched-top tab that appears as the diary slot, legend key, slider thumb, list bullet, FAQ chevron and comparison glyph. Buttons are ticket stubs with bitten sides; rules between rows are dotted like tear lines. Nothing is shadowed.\n\nThe voice is plain and dry, and the interface is dense with small facts set in a geometric-grotesque display face over a warm serif reading face. Pink is scarce on purpose: it is the colour of a seat that is available right now.",
+    "keyCharacteristics": [
+      "Three section themes swapped by a class, each setting its own background, text, rule and focus colours.",
+      "Arched \"seat\" silhouette reused for every small control and marker.",
+      "Perforation (half-circle bites, dotted rules) as the structural joint between sections and rows.",
+      "Flat, no shadows; state is shown by fill change and a 2px lift.",
+      "Mobile rotates the seating plan: time runs down, rooms become columns."
+    ],
+    "rules": [
+      { "name": "The Open Seat Rule", "body": "Pink means a seat is open, offered or refilled, plus its pulse ring, the time-axis beat marker, and the focus ring on dark surfaces. Buttons, links, headings and decorative accents are cream or ink, never pink.", "section": "colors" },
+      { "name": "The Sheet Theme Rule", "body": "A section picks one of the three themes (t-field, t-cream, t-ink) and everything inside reads its variables. Do not hard-code colours inside a section. Adjacent sections use different themes.", "section": "colors" },
+      { "name": "The Cream Focus Rule", "body": "Focus ring is 3px solid, offset 3px: pink on field and ink, ink on cream.", "section": "colors" },
+      { "name": "The Two Voices Rule", "body": "Interface text (labels, buttons, numbers, names, dt) is the grotesque; running prose and table cells are the serif.", "section": "typography" },
+      { "name": "The Tabular Rule", "body": "Any time, length or price uses font-variant-numeric: tabular-nums.", "section": "typography" },
+      { "name": "The Flat Sheet Rule", "body": "Separate layers with colour change, a perforation or a dotted rule, never with a shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do reserve seat pink for open, offered and refilled seats, the pulse ring, the time-axis beat marker and the focus ring on dark surfaces.",
+      "Do build buttons and UI accents from cream and ink.",
+      "Do reuse the arched seat silhouette for any new small control or marker.",
+      "Do join sections with a perforated edge and rows with dotted rules.",
+      "Do pair every colour state with text or shape (dashed, flag, \"Check:\" prefix)."
+    ],
+    "donts": [
+      "Don't use pink for buttons, links, headings or decoration.",
+      "Don't add shadows; use colour and edge instead.",
+      "Don't hard-code colours inside a section; use the theme variables.",
+      "Don't set prose in the grotesque or UI labels in the serif.",
+      "Don't present any figure, name or quote as real; all content is labelled illustrative or fictional."
+    ]
+  }
+}

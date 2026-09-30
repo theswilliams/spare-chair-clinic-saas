@@ -1,0 +1,30 @@
+---
+import '@fontsource-variable/bricolage-grotesque/index.css';
+import '@fontsource-variable/source-serif-4/index.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2236c4" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip" href="#demo">Skip to the demo</a>
+    <slot />
+    <script>
+      import '../scripts/main';
+    </script>
+  </body>
+</html>
