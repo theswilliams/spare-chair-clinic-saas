@@ -14,8 +14,8 @@ Most "no-show" tools are reminder tools, and the category's pages look like ever
 
 The diary is a box-office seating plan, and a cancellation is a seat returned to sale.
 
-- Drenched cobalt field, cream ticket stock, deep navy ink, and one hot-pink signal used only for seats that are open, offered or newly refilled. Buttons and UI accents stay cream.
-- Seats are small back-rounded buttons with initials. Free is a dashed outline, booked is solid cream, open is pink.
+- Drenched forest-green field, warm paper ticket stock, near-black green ink, and one coral signal used only for seats that are open, offered or newly refilled. Buttons and UI accents stay cream.
+- Seats are small back-rounded buttons with initials. Free is a dashed outline, booked is solid cream, open is coral.
 - Sections are cut from each other with perforated edges, like a ticket strip. There are no cards, shadows or hairline tables.
 - Type is Bricolage Grotesque Variable for display and interface and Source Serif 4 Variable for reading text. No monospace, no uppercase labels.
 
@@ -64,7 +64,7 @@ Not done: no automated test suite, no cross-browser pass beyond Chromium, no scr
 
 ## Accessibility
 
-- Targeting WCAG 2.2 AA. Body and UI text meet 4.5:1 on their surfaces. Pink is used as a fill with navy text, never as small text on cream.
+- Targeting WCAG 2.2 AA. Body and UI text meet 4.5:1 on their surfaces. Coral is used as a fill with dark ink text, never as small text on paper.
 - Seat and queue states are never colour-only: open seats say "Open", refilled seats carry a "New" flag, free seats are dashed.
 - Every control is keyboard reachable with a visible focus ring. The demo status line announces changes. Open seats keep focus by using `aria-disabled` rather than `disabled`.
 - Skip link, a real `switch` role for the billing toggle, labelled sliders with live outputs, `aria-invalid` and text errors on the form, and `aria-current` on the dock.

@@ -2,18 +2,18 @@
 name: Spare Chair
 description: A fictional waitlist tool that refills cancelled appointment slots, drawn as a perforated ticket book and a seating plan.
 colors:
-  field-blue: "#2236c4"
-  field-blue-deep: "#1a2aa3"
-  cream: "#f0e4c3"
+  field: "#12372a"
+  field-deep: "#0c2a1f"
+  cream: "#f4eee1"
   cream-deep: "#e3d3a8"
-  ink: "#0e1330"
-  seat-pink: "#ff6b9f"
-  refilled-blush: "#ffd3e3"
+  ink: "#0b1f17"
+  seat-coral: "#f2704d"
+  refilled-blush: "#fbd9cb"
   cream-hover: "#fbf3dc"
   paper-white: "#ffffff"
-  text-on-field: "#cdd4f7"
-  text-on-cream: "#474c70"
-  text-on-ink: "#b9bdd8"
+  text-on-field: "#d3e3d8"
+  text-on-cream: "#3f544a"
+  text-on-ink: "#b4c9bb"
 typography:
   display:
     fontFamily: "'Bricolage Grotesque Variable', 'Helvetica Neue', Arial, sans-serif"
@@ -76,7 +76,7 @@ components:
     rounded: "{rounded.seat}"
     height: "3.5rem"
   seat-open:
-    backgroundColor: "{colors.seat-pink}"
+    backgroundColor: "{colors.seat-coral}"
     textColor: "{colors.ink}"
     rounded: "{rounded.seat}"
     height: "3.5rem"
@@ -106,9 +106,9 @@ components:
 
 **Creative North Star: "The Ticket Book"**
 
-Every surface is a sheet of paper-like stock in one of three flat colours (blue field, cream, ink), torn from the previous sheet along a perforated edge. The one recurring object is the seat: an arched-top tab (large radius on top, tight radius below) that appears as the demo's diary slot, the legend key, the slider thumb, the list bullet, the FAQ chevron and the comparison glyph. Buttons are ticket stubs with bitten sides. Rules between rows are dotted, like tear lines. Nothing is shadowed; depth is one sheet sitting over another.
+Every surface is a sheet of paper-like stock in one of three flat colours (forest field, cream, ink), torn from the previous sheet along a perforated edge. The one recurring object is the seat: an arched-top tab (large radius on top, tight radius below) that appears as the demo's diary slot, the legend key, the slider thumb, the list bullet, the FAQ chevron and the comparison glyph. Buttons are ticket stubs with bitten sides. Rules between rows are dotted, like tear lines. Nothing is shadowed; depth is one sheet sitting over another.
 
-The voice is plain and dry, and the interface is dense with small facts (times, initials, lengths) set in a geometric-grotesque display face over a warm serif reading face. Pink is scarce on purpose: it is the colour of a seat that is available right now, so its appearance is itself information.
+The voice is plain and dry, and the interface is dense with small facts (times, initials, lengths) set in a geometric-grotesque display face over a warm serif reading face. coral is scarce on purpose: it is the colour of a seat that is available right now, so its appearance is itself information.
 
 **Key Characteristics:**
 - Three section themes swapped by a class, each setting its own background, text, rule and focus colours.
@@ -119,11 +119,11 @@ The voice is plain and dry, and the interface is dense with small facts (times, 
 
 ## Colors
 
-A cream-and-ink ticket palette on a saturated cobalt field, with one hot pink reserved for seat availability.
+A cream-and-ink ticket palette on a saturated forest green field, with one hot coral reserved for seat availability.
 
 ### Primary
-- **Field Blue** (frontmatter `field-blue`): hero, comparison and signup sections. Deep variant is defined for hover/pressed depth on blue; the FAQ chevron hover uses Field Blue on cream.
-- **Seat Pink** (`seat-pink`): open seat, the pulse ring around an open seat, the time-axis beat marker under the returned window, the "Open"/"offered" waitlist status chip, the "new" flag, and the focus ring on field/ink surfaces.
+- **Forest Field** (frontmatter `field`): hero, comparison and signup sections. Deep variant is defined for hover/pressed depth on forest; the FAQ chevron hover uses Forest Field on cream.
+- **Seat Coral** (`seat-coral`): open seat, the pulse ring around an open seat, the time-axis beat marker under the returned window, the "Open"/"offered" waitlist status chip, the "new" flag, and the focus ring on field/ink surfaces.
 - **Refilled Blush** (`refilled-blush`): a seat that has been refilled (and its legend key).
 
 ### Neutral
@@ -132,9 +132,9 @@ A cream-and-ink ticket palette on a saturated cobalt field, with one hot pink re
 - **Text tints** (`text-on-field`, `text-on-cream`, `text-on-ink`): secondary text, one per theme. Cream Deep and Paper White are hover/loading states only.
 
 ### Named Rules
-**The Open Seat Rule.** Pink means a seat is open, offered or refilled, plus its pulse ring, the time-axis beat marker, and the focus ring on dark surfaces. Buttons, links, headings and decorative accents are cream or ink, never pink.
+**The Open Seat Rule.** coral means a seat is open, offered or refilled, plus its pulse ring, the time-axis beat marker, and the focus ring on dark surfaces. Buttons, links, headings and decorative accents are cream or ink, never coral.
 **The Sheet Theme Rule.** A section picks one of the three themes (`t-field`, `t-cream`, `t-ink`) and everything inside reads its variables. Do not hard-code colours inside a section. Adjacent sections use different themes.
-**The Cream Focus Rule.** Focus ring is 3px solid, offset 3px: pink on field and ink, ink on cream.
+**The Cream Focus Rule.** Focus ring is 3px solid, offset 3px: coral on field and ink, ink on cream.
 
 ## Typography
 
@@ -172,15 +172,15 @@ Small controls share the arched-seat silhouette: large top radii, tight bottom r
 ## Components
 
 ### Buttons
-- **Stub:** cream fill, ink text, display 700, 1.05rem x 1.9rem, bitten sides. Hover goes white; active presses 1px; loading tints to pale blue. Dock variant is smaller.
+- **Stub:** cream fill, ink text, display 700, 1.05rem x 1.9rem, bitten sides. Hover goes white; active presses 1px; loading tints to pale green. Dock variant is smaller.
 - **Ghost:** transparent, 1.5px themed line border, arched top corners; hover lifts border to full foreground.
 - **Text link ("plain"):** display 600, underlined, wavy underline on hover.
 
 ### Seat (signature)
-Booked: cream with initials and length. Open: pink, non-interactive, with a looping pulse ring (disabled under reduced motion). Refilled: blush with a pink "new" flag. Free: dashed outline cell. Legend uses the same four shapes; meaning is also carried by text and dashed/solid, not colour alone.
+Booked: cream with initials and length. Open: coral, non-interactive, with a looping pulse ring (disabled under reduced motion). Refilled: blush with a coral "new" flag. Free: dashed outline cell. Legend uses the same four shapes; meaning is also carried by text and dashed/solid, not colour alone.
 
 ### Inputs / Fields
-Cream fill, ink text, 2px transparent border, seat radii. Invalid: pink border and pale-pink fill plus a "Check:" text prefix. Range sliders use a cream fill track and a seat-shaped thumb. The billing switch is a pill with an ink border and seat-shaped knob.
+Cream fill, ink text, 2px transparent border, seat radii. Invalid: coral border and pale-coral fill plus a "Check:" text prefix. Range sliders use a cream fill track and a seat-shaped thumb. The billing switch is a pill with an ink border and seat-shaped knob.
 
 ### Pricing ticket
 One ink slab with three columns separated by 3px dotted vertical rules (horizontal when stacked); list bullets are tiny cream seat shapes.
@@ -194,14 +194,14 @@ Dotted-rule-separated rows; term column 8rem. FAQ summary chevron is an inverted
 ## Do's and Don'ts
 
 ### Do:
-- **Do** reserve seat pink for open, offered and refilled seats, the pulse ring, the time-axis beat marker and the focus ring on dark surfaces.
+- **Do** reserve seat coral for open, offered and refilled seats, the pulse ring, the time-axis beat marker and the focus ring on dark surfaces.
 - **Do** build buttons and UI accents from cream and ink.
 - **Do** reuse the arched seat silhouette for any new small control or marker.
 - **Do** join sections with a perforated edge and rows with dotted rules.
 - **Do** pair every colour state with text or shape (dashed, flag, "Check:" prefix).
 
 ### Don't:
-- **Don't** use pink for buttons, links, headings or decoration.
+- **Don't** use coral for buttons, links, headings or decoration.
 - **Don't** add shadows; use colour and edge instead.
 - **Don't** hard-code colours inside a section; use the theme variables.
 - **Don't** set prose in the grotesque or UI labels in the serif.

@@ -7,7 +7,7 @@ Living file for the five-site series. Each project adds a row; later projects mu
 | Fictional client | Grist, DTC hand coffee grinder | Ninth Coal, late-night wood-fire restaurant | Marlowe Adeyemi-Voss, fashion photographer (fictional) | Spare Chair, clinic no-show recovery SaaS (fictional) | |
 | Mode | Persuade | Persuade | Experience | Persuade | |
 | World | Engineering inspection drawing; sections change material | The one lit window seen from a dark street, then stepping inside | A shoot-day call sheet with a lighting plot; the paperwork is the interface | The diary as a box-office seating plan; a cancellation is a seat returned to sale | |
-| Palette | Signal Orange #FF4D00, graphite #16181A, bare aluminium #CBD0D2/#E8EAEA, ink #111 | Street blue-black #0B1014, char brown #160D09, gilt #DDAE4E, coal red #BF341B, amber #FF9A2E only in flame, bone #F0E4D0 | Cool paper #ECEEEF, ink #0D0E10, one chartreuse highlighter #D4F23A as a fill under black text only | Drenched cobalt #2236C4, cream ticket stock #F0E4C3, navy ink #0E1330, one pink signal #FF6B9F for returned/offered only | |
+| Palette | Signal Orange #FF4D00, graphite #16181A, bare aluminium #CBD0D2/#E8EAEA, ink #111 | Street blue-black #0B1014, char brown #160D09, gilt #DDAE4E, coal red #BF341B, amber #FF9A2E only in flame, bone #F0E4D0 | Cool paper #ECEEEF, ink #0D0E10, one chartreuse highlighter #D4F23A as a fill under black text only | Drenched forest green #12372A, ticket-stock paper #F4EEE1, near-black green ink #0B1F17, one coral signal #F2704D for returned/offered only | |
 | Type | Archivo Variable (condensed heavy caps, wdth axis) + Courier Prime for values only | Young Serif (arched display, gilt lettering) + Hanken Grotesk Variable | Schibsted Grotesk only; rank by weight and case, tabular numerals | Bricolage Grotesque Variable (display + UI) + Source Serif 4 Variable (body); no mono | |
 | Layout | Full-bleed stacked sheets, 2-col split, title-block, ruled tables, no cards | Arched frames, left vertical rail, dot-leader menu, cream reservation slip; soft-edged, staggered room cards | Image-led: 38/62 ruled split, stepped alternating running-order blocks, bleeding studies; no cards | Drenched colour-field sections cut by perforated edges; live seating-plan grid (rooms x half-hours) as the hero; ticket-stub pricing; no cards | |
 | Navigation | Fixed thin top bar + sticky stamped buy dock | Left vertical-text rail on desktop; top bar + bottom dock on mobile | Fixed ruled top bar with a live frame/page counter; full-screen viewer with prev/next and live relight plot | Fixed bottom ticket-bar dock with scroll-spy and a trial stub | |
@@ -28,7 +28,7 @@ Living file for the five-site series. Each project adds a row; later projects mu
 - Dark warm palette with a living fire canvas as the hero (Project 02)
 - Cool-paper call-sheet ground with thin ink rules, registration crosses and a single highlighter fill (Project 03)
 - WebGL fabric studies as hero imagery and a draggable light-plot control (Project 03)
-- Drenched cobalt field with cream and a single hot-pink signal (Project 04)
+- Drenched forest-green field with paper and a single coral signal (Project 04)
 - Seat-plan / calendar grid as the hero demo (Project 04)
 - Fixed bottom ticket-bar dock and perforated section dividers (Project 04)
 - Bricolage Grotesque + Source Serif pairing (Project 04)
