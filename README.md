@@ -2,6 +2,12 @@
 
 > **Fictional concept project.** Spare Chair is an invented product made for a web design portfolio (project 04 of 5). There is no company, no customers, no real clinics and no service behind this site. Every name, number, testimonial-style note and price is illustrative and labelled as such on the page. Nothing you type into the form is sent or stored.
 
+## Screenshots
+
+![Desktop hero](docs/screenshots/spare-chair-desktop.png)
+
+[Full page, desktop](docs/screenshots/spare-chair-full.png) · [Mobile hero](docs/screenshots/spare-chair-mobile.png) · [Full page, mobile](docs/screenshots/spare-chair-mobile-full.png)
+
 ## Project
 
 A marketing site for a fictional waitlist-backfill tool for small dental and physiotherapy clinics. When a patient cancels, Spare Chair offers the slot to the people on the clinic's waitlist who fit it, in order, and the first yes takes the seat.
